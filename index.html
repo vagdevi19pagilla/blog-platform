@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blog</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>All Posts</h1>
+<div id="posts"></div>
+
+<script>
+fetch("/api/posts")
+.then(res=>res.json())
+.then(data=>{
+  let output="";
+  data.forEach(p=>{
+    output += `<h3>${p.title}</h3><p>${p.content}</p>`;
+  });
+  document.getElementById("posts").innerHTML = output;
+});
+</script>
+</body>
+</html>
